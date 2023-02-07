@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Time Sheet Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="mx-5 mb-3 mt-1">Time Sheet Calculator</h1>
+    <!-- Modal -->
+    <div class="modal fade" id="about" tabindex="-1" aria-labelledby="about" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="aboutlabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum molestias consectetur sed fuga
+                    unde tempore nisi delectus laboriosam iusto saepe aperiam modi optio explicabo aliquid voluptate,
+                    autem magni sapiente consequatur illo voluptatum. Quos, qui!
+                </div>
+                <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table" id="timesheettable">
+            <tr class="heading">
+                <td scope="col">Day</td>
+                <td scope="col">Starting Time</td>
+                <td scope="col">Ending Time</td>
+                <td scope="col" id="br_deduction">
+                    <div>Break Deduction</div>
+                    <div class="knowmore" id="quest"><button type="button" class="btn-modal" data-bs-toggle="modal"
+                            data-bs-target="#about">?</button></div>
+                </td>
+                <td scope="col">Total</td>
+            </tr>
+            <tr class="tr">
+                <td> <b>
+                        Monday
+                    </b>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="start-mon-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="start-mon-m" value="00">
+                    <select name="" class="AMPM" id="start-zone-select-mon">
+                        <option value="00" selected>AM</option>
+                        <option value="12">PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="end-mon-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="end-mon-m" value="00">
+                    <select name="" class="AMPM" id="end-zone-select-mon">
+                        <option value="00">AM</option>
+                        <option value="12" selected>PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="br-mon-h" value="2">
+                    :
+                    <input type="text" class="inp-time" id="br-mon-m" value="00">
+                </td>
+                <td>
+                    <div class="total" id="mon-total"></div>
+                </td>
+            </tr>
+            <tr class="tr">
+                <td> <b> Tuesday</b></td>
+                <td>
+                    <input type="text" class="inp-time" id="start-tue-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="start-tue-m" value="00">
+                    <select name="" class="AMPM">
+                        <option value="00" selected id="start-zone-select-tue">AM</option>
+                        <option value="12">PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="end-tue-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="end-tue-m" value="00">
+                    <select name="" class="AMPM" id="end-zone-select-tue">
+                        <option value="00">AM</option>
+                        <option value="12" selected>PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="br-tue-h" value="4">
+                    :
+                    <input type="text" class="inp-time" id="br-tue-m" value="00">
+                </td>
+                <td>
+                    <div class="total" id="tue-total"></div>
+                </td>
+            </tr>
+            <tr class="tr">
+                <td class="day"><b>Wednesday</b></td>
+                <td>
+                    <input type="text" class="inp-time" id="start-wed-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="start-wed-m" value="00">
+                    <select name="" class="AMPM" id="start-zone-select-wed">
+                        <option value="00" selected>AM</option>
+                        <option value="12">PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="end-wed-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="end-wed-m" value="00">
+                    <select name="" class="AMPM" id="end-zone-select-wed">
+                        <option value="00">AM</option>
+                        <option value="12" selected>PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="br-wed-h" value="5">
+                    :
+                    <input type="text" class="inp-time" id="br-wed-m" value="00">
+                </td>
+                <td>
+                    <div class="total" id="wed-total"></div>
+                </td>
+            </tr>
+            <tr class="tr">
+                <td class="day"><b>Thursday</b></td>
+                <td>
+                    <input type="text" class="inp-time" id="start-thu-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="start-thu-m" value="00">
+                    <select name="" class="AMPM" id="start-zone-select-thu">
+                        <option value="00" selected>AM</option>
+                        <option value="12">PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="end-thu-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="end-thu-m" value="00">
+                    <select name="" class="AMPM" id="end-zone-select-thu">
+                        <option value="00">AM</option>
+                        <option value="12" selected>PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="br-thu-h" value="1">
+                    :
+                    <input type="text" class="inp-time" id="br-thu-m" value="00">
+                </td>
+                <td>
+                    <div class="total" id="thu-total"></div>
+                </td>
+            </tr>
+            <tr class="tr">
+                <td class="day"><b>Friday</b></td>
+                <td>
+                    <input type="text" class="inp-time" id="start-fri-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="start-fri-m" value="00">
+                    <select name="" class="AMPM" id="start-zone-select-fri">
+                        <option value="00" selected>AM</option>
+                        <option value="12">PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="end-fri-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="end-fri-m" value="00">
+                    <select name="" class="AMPM" id="end-zone-select-fri">
+                        <option value="00">AM</option>
+                        <option value="12" selected>PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="br-fri-h" value="2">
+                    :
+                    <input type="text" class="inp-time" id="br-fri-m" value="00">
+                </td>
+                <td>
+                    <div class="total" id="fri-total"></div>
+                </td>
+            </tr>
+            <tr class="tr">
+                <td class="day"><b>Saturday</b></td>
+                <td>
+                    <input type="text" class="inp-time" id="start-sat-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="start-sat-m" value="00">
+                    <select name="" class="AMPM" id="start-zone-select-sat">
+                        <option value="00" selected>AM</option>
+                        <option value="12">PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="end-sat-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="end-sat-m" value="00">
+                    <select name="" class="AMPM" id="end-zone-select-sat">
+                        <option value="00">AM</option>
+                        <option value="12" selected>PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="br-sat-h" value="3">
+                    :
+                    <input type="text" class="inp-time" id="br-sat-m" value="00">
+                </td>
+                <td>
+                    <div class="total" id="sat-total"></div>
+                </td>
+            </tr>
+            <tr class="tr">
+                <td class="day"><b>Sunday</b></td>
+                <td>
+                    <input type="text" class="inp-time" id="start-sun-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="start-sun-m" value="00">
+                    <select name="" class="AMPM" id="start-zone-select-sun">
+                        <option value="00" selected>AM</option>
+                        <option value="12">PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="end-sun-h" value="8">
+                    :
+                    <input type="text" class="inp-time" id="end-sun-m" value="00">
+                    <select name="" class="AMPM" id="end-zone-select-sun">
+                        <option value="00">AM</option>
+                        <option value="12" selected>PM</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="inp-time" id="br-sun-h" value="4">
+                    :
+                    <input type="text" class="inp-time" id="br-sun-m" value="00">
+                </td>
+                <td>
+                    <div class="total" id="sun-total"></div>
+                </td>
+            </tr>
+            <tr class="tr">
+                <td colspan="3" id="codebeutify"> CodeBeutify </td>
+                <td><b>Total Hours:</b></td>
+                <td><b id="total-h">00</b></td>
+            </tr>
+
+        </table>
+        <button id="calculate" type="button" class="btn"> <img src="img/calculate.png" id="calc" alt="">
+            Calculate</button>
+        <button id="clear" type="reset" class="btn"> <img src="img/cancel.png" alt="" id="cancel"> Clear</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
