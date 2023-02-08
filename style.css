@@ -1,13 +1,14 @@
 .container{
     /* border: 2px solid black; */
-    height: 377px;
+    height: 496px;
     padding: 0;
+    box-shadow: 2px 0px 14px 0px rgb(0 0 0 / 80%);
 }
-.inp-time{
+.inp-time-start-h,.inp-time-start-m,.inp-time-end-h,.inp-time-end-m,.inp-time-br-h,.inp-time-br-m{
     width: 34px;
     text-align: center;
 }
-.AMPM{
+.AMPM-start,.AMPM-end{
     height: 30px;
 }
 #br_deduction{
